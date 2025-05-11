@@ -1,19 +1,19 @@
 import { BasePage } from './BasePage';
 
 export class CartPage extends BasePage {
+    // Private selectors
+    #title = '[data-test="title"]';
+    #checkoutButton = '[data-test="checkout"]';
+
     constructor(page) {
         super(page);
-        
-        // Selectors
-        this.title = '[data-test="title"]';
-        this.checkoutButton = '[data-test="checkout"]';
     }
 
     async proceedToCheckout() {
-        await this.click(this.checkoutButton);
+        await this.click(this.#checkoutButton);
     }
 
     async expectCartTitle() {
-        await this.expectToContainText(this.title, 'Your Cart');
+        await this.expectToContainText(this.#title, 'Your Cart');
     }
 } 
